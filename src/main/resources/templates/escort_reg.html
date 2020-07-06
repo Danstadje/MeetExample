@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Regisztráció</title>
+</head>
+<body>
+
+<form method="post" th:action="@{/escort_register}" th:method="post" th:object="${escortRegistrationModel}">
+    <table style="margin: auto;" id="datatable">
+        <tr style="margin: auto; width: 10%; text-align: right">
+            <td>
+                Óradíj:
+            </td>
+            <td>
+                <input type="text" name="hourlyWage" th:field="*{hourlyWage}" placeholder="5000"/>
+            </td>
+        </tr>
+        <tr style="margin: auto; width: 10%; text-align: right">
+            <td>
+                Bio:
+            </td>
+            <td>
+                <textarea rows="4" cols="50" maxlength="250" name="bio" th:field="*{bio}" placeholder="Bio"></textarea>
+            </td>
+        </tr>
+        <th:block th:each="service : ${servicesList}">
+            <tr style="margin: auto; width: 10%; text-align: right">
+                <td>
+                    <label>
+                        <input type="checkbox" th:path="*{services}" th:field="*{services}" th:value="${service.getServiceId()}" th:valuetype="Services"
+                               th:text="${service.getServiceName()}"/>
+                    </label>
+                </td>
+            </tr>
+        </th:block>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="submit" value="Regisztráció">
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

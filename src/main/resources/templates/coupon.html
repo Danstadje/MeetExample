@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kuponok</title>
+</head>
+<body>
+<div>
+    <p style="text-align: center; margin-top: 24px;"><b style="font-size: 32px;">Ismerkedj online (vagy ugord át egyből
+        az ismerkedés részét)!</b></p>
+    <table style="width: 100%; background-color: silver; margin-top: 24px;">
+        <thead>
+        <tr>
+            <th style="border: 1px solid black;"><a href="home" style="text-decoration: none; color: black;">Főoldal</a>
+            </th>
+            <th style=" border: 1px solid black;"><a href="messages" style="text-decoration: none; color: black;">Beszélgetések</a>
+            </th>
+            <th style="border: 1px solid black;"><a href="coupon"
+                                                    style="text-decoration: none; color: black;">Kuponok</a></th>
+            <th style="border: 1px solid black;"><a href="escort"
+                                                    style="text-decoration: none; color: black;">Escortok</a></th>
+            <th style="border: 1px solid black;"><a href="settings" style="text-decoration: none; color: black;">Profilbeállítások</a>
+            </th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<th:block th:each="coupon : ${coupons}">
+    <table style="width: 60%; border: 0.5vh solid black">
+        <tr>
+            <td rowspan="2" align="center" style="border-right: 0.25vh solid black"
+                th:text="${coupon.getCompany().getCompanyName()}"></td>
+            <td align="center">
+                <p th:text="${coupon.getDiscount()}"></p>
+            </td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td rowspan="2" align="center" style="border-right: 0.25vh solid black">
+                <label>Cím:</label>
+                <p th:text="${coupon.getCompany().getAddress()}"></p>
+                <label>Kapcsolat:</label>
+                <p th:text="'Név: ' + ${coupon.getCompany().getContact().getLastName()} + ' ' + ${coupon.getCompany().getContact().getFirstName()}"></p>
+                <p th:text="'Teleofon: ' + ${coupon.getCompany().getContact().getPhone()}"></p>
+                <p th:text="'Email: ' + ${coupon.getCompany().getContact().getEmail()}"></p>
+            </td>
+            <td align="center">
+                <label>Felhasználható:</label>
+                <p th:text="${coupon.getStartDate()}"></p>
+                <label>Eddig:</label>
+                <p th:text="${coupon.getEndDate()}"></p>
+                <label>Kedvezmény mértéke:</label>
+                <p th:text="${coupon.getAmount()} + '%'"></p>
+            </td>
+        </tr>
+    </table>
+    <br/>
+</th:block>
+</body>
+</html>

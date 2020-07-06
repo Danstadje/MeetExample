@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Regisztráció</title>
+
+<body>
+<form method="post" th:action="@{/register}" th:method="post" th:object="${registrationModel}">
+    <table style="margin: auto;" id="datatable">
+        <tr style="margin: auto; width: 10%; text-align: right">
+            <td>
+                Felhasználónév:
+            </td>
+            <td>
+                <input type="text" name="username" th:field="*{username}" placeholder="Felhasználónév"/>
+            </td>
+        </tr>
+        <tr style="margin: auto; width: 10%; text-align: right">
+            <td>
+                Jelszó:
+            </td>
+            <td>
+                <input type="password" name="password" th:field="*{password}" placeholder="Jelszó"/>
+            </td>
+        </tr>
+        <tr style="margin: auto; width: 10%; text-align: right">
+            <td>
+                Jelszó megerősítése:
+            </td>
+            <td>
+                <input type="password" name="password2" placeholder="Jelszó megerősítése"/>
+            </td>
+        </tr>
+        <tr style="margin: auto; width: 10%; text-align: right">
+
+            <td>
+                Vezetéknév:
+            </td>
+            <td>
+                <input type="text" name="firstname" th:field="*{firstName}" placeholder="Vezetéknév"/>
+            </td>
+        </tr>
+        <tr style="margin: auto; width: 10%; text-align: right">
+            <td>
+                Keresztnév:
+            </td>
+            <td>
+                <input type="text" name="lastname" th:field="*{lastName}" placeholder="Keresztnév"/>
+            </td>
+        </tr>
+        <tr style="margin: auto; width: 10%; text-align: right">
+            <td>
+                E-mail cím:
+            </td>
+            <td>
+                <input type="email" name="email" th:field="*{email}" placeholder="E-mail cím"/>
+            </td>
+        </tr>
+        <tr style="margin: auto; width: 10%; text-align: right">
+            <td>
+                E-mail cím megerősítése:
+            </td>
+            <td>
+                <input type="email" name="email2" placeholder="E-mail cím megerősítése"/>
+            </td>
+        </tr>
+        <tr style="margin: auto; width: 10%; text-align: right">
+            <td>
+                Születési idő:
+            </td>
+            <td>
+                <input type="date" th:field="*{birthday}" name="birthday"/>
+            </td>
+        </tr>
+        <tr style="margin: auto; width: 10%; text-align: right">
+            <td>
+                Lakcím:
+            </td>
+            <td>
+                <input type="text" name="country" th:field="*{country}" placeholder="Ország"/>
+            </td>
+            <td>
+                <input type="number" name="zip" th:field="*{zip}" placeholder="Irányítószám"/>
+            </td>
+            <td>
+                <input type="text" name="town" th:field="*{town}" placeholder="Város"/>
+            </td>
+        </tr>
+        <tr style="margin: auto; width: 10%; text-align: right">
+            <td>
+                Nem:
+            </td>
+            <td>
+                <input type="radio" th:field="*{gender}" name="gender" th:value="female"/>Nő
+            </td>
+            <td>
+                <input type="radio" th:field="*{gender}" name="gender" th:value="male"/>Férfi
+            </td>
+        </tr>
+        <tr style="margin: auto; width: 10%; text-align: right">
+            <td>
+                <input type="checkbox" th:field="*{escort}" name="escort" th:name="escort_checkbox" th:value="false"/>Escort
+            </td>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="submit" value="Regisztráció">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
